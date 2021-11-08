@@ -20,10 +20,10 @@ module States
       @secondscale = context[:second_scale]
       @value = context[:value].to_i
 
-      rule = FORMULAS.find { |rule| rule[:first] == @firstscale && rule[:second] == @secondscale }
+      rule = FORMULAS.find { |formula| formula[:first] == @firstscale && formula[:second] == @secondscale }
       result = rule[:func].call(@value)
 
-      IO_Adapter.instance.write("Result: #{@value.round(3)} °#{@firstscale} = #{result.round(3)} °#{@secondscale}")
+      IOAdapter.instance.write("Result: #{@value.round(3)} °#{@firstscale} = #{result.round(3)} °#{@secondscale}")
     end
 
     def next
